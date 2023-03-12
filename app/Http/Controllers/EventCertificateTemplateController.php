@@ -30,26 +30,23 @@ class EventCertificateTemplateController extends Controller
     }
     public function store(Request $request)
     {
-        $input = $request->only('custom_field', 'template_name');
+        $input = $request->only(
+            'custom_field',
+            'template_name',
+            'template_width',
+            'template_height'
+        );
 
         $file = $request->file('url');
-        // $filename = $file->getClientOriginalName();
-        $filename = 'index.html';
-        // $file->move(public_path('/backend_assets/images/eventTemplates/'), $filename);
+        $filename = 'index.blade.php';
         $input['url'] = $filename;
-
-        // if ($request->hasFile('url')) {
-        //     $file = $request->file('url');
-        //     $extension = $file->getClientOriginalExtension();
-        //     $filename = microtime() . '.' . $extension;
-        //     $file->move(public_path('/backend_assets/images/eventTemplates'), $filename);
-        //     $input['url'] = $filename;
-        // }
-
         $evenntTemplate = EventCertificateTemplate::create($input);
         $evenntTemplate->save();
         $id = $evenntTemplate->id;
-        $file->move(public_path('/backend_assets/images/eventTemplates/' . $id), $filename);
+
+
+
+        $file->move(resource_path('/views/eventTemplates/' . $id), $filename);
 
         if ($request->hasFile('template_files')) {
             foreach ($request->file('template_files') as $file) {
@@ -70,16 +67,22 @@ class EventCertificateTemplateController extends Controller
         $evenntTemplate = EventCertificateTemplate::findOrFail($id);
         $evenntTemplate->template_name = $request->template_name;
         $evenntTemplate->custom_field = $request->custom_field;
+        $evenntTemplate->template_height = $request->template_height;
+        $evenntTemplate->template_width = $request->template_width;
 
         if ($request->hasFile('url')) {
             $destination = ('backend_assets/images/eventTemplates/' . $id) . $evenntTemplate->url;
+
             if (File::exists($destination)) {
                 File::delete($destination);
             }
 
             $file = $request->file('url');
             $filename = $file->getClientOriginalName();
-            $file->move(public_path('/backend_assets/images/eventTemplates/' . $id), $filename);
+
+            // $file->move(public_path('/backend_assets/images/eventTemplates/' . $id), $filename);
+            $file->move(resource_path('/views/eventTemplates/' . $id), $filename);
+
             $evenntTemplate->url = $filename;
         }
 
@@ -102,25 +105,5 @@ class EventCertificateTemplateController extends Controller
     {
     }
 
-    public function generatePdf(Request $request, $id)
-    {
-        $participant = Participant::findOrFail($id);
-        $event = $participant->event->template;
 
-
-        $response = $this->client->request(
-            'GET',
-            url('/backend_assets/images/eventTemplates/26/index.html'),
-            [
-                'Connection' => 'close',
-                'timeout' => 5,
-                'connect_timeout' => 5
-            ]
-        );
-        dd($response->getBody());
-        $pdf = App::make('dompdf.wrapper');
-
-        $pdf->loadHTML($text);
-        return $pdf->stream();
-    }
 }
