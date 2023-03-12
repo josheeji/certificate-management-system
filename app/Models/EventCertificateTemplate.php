@@ -10,7 +10,8 @@ class EventCertificateTemplate extends Model
     use HasFactory;
 
     protected $fillable = [
-        'url', 'custom_field', 'template_name'
+        'url', 'custom_field', 'template_name', 'template_width',
+        'template_height'
     ];
 
     public function events()

@@ -21,10 +21,10 @@ class ParticipantController extends Controller
     public function index()
     {
         // $event = Event::findOrFail($id);
-        $events= Event::all();
+        $events = Event::all();
 
         // $participant = Participant::where('event_id', '=', $id)->get();
-        $participants=Participant::all();
+        $participants = Participant::all();
         return view('pages.backend.participant.index', compact('participants', 'events'));
     }
 
@@ -89,10 +89,25 @@ class ParticipantController extends Controller
         return redirect('/admin/participants')->with('message', 'File Uploaded Successfully');
     }
 
-    public function generatePdf(Request $request)
+    public function generatePdf(Request $request, $id)
     {
+        $participant = Participant::findOrFail($id);
+        $template = $participant->event->eventTemplate;
+
+
+        $resourcePath = '/backend_assets/images/eventTemplates/' .  $template->id . '/';
+
+        $customPaper = array(0, 0, 667.00, 954.80);
+        $height = isset($_POST['template_height']) ? $_POST['template_height'] : $customPaper[2];
+
+        $width = isset($_POST['template_width']) ? $_POST['template_width'] : $customPaper[3];
+
+
+
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->stream();
+        $pdf->loadView('eventTemplates.' . $template->id . '.index', compact('participant', 'resourcePath', 'height', 'width'))
+            ->setPaper($customPaper, 'potrait');
+
+        return $pdf->download();
     }
 }

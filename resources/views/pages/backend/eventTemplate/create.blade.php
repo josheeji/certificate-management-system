@@ -36,6 +36,8 @@
                     @enderror
                 </div>
 
+               
+
                 <div class="row mb-3">
                     <label for="url" class="col-sm-2 col-form-label">HTML File<span
                             class="text-danger">*</span></label>
@@ -70,6 +72,29 @@
                             value="{{ old('template_files') }}">
                     </div>
                     @error('template_files')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="row mb-3">
+                    <label for="template_height" class="col-sm-2 col-form-label">Template Height<span
+                            class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" name="template_height" class="form-control" id="template_height"
+                            placeholder="Template Height" value="{{ old('template_height') }}">
+                    </div>
+                    @error('template_height')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="row mb-3">
+                    <label for="template_width" class="col-sm-2 col-form-label">Template Width<span
+                            class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" name="template_width" class="form-control" id="template_width"
+                            placeholder="Template Width" value="{{ old('template_width') }}">
+                    </div>
+                    @error('template_width')
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
                 </div>
