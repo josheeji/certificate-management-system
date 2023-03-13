@@ -61,7 +61,7 @@
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
                 </div>
-
+event id{{request()->event_id}}
                 <div class="row mb-3">
                     <label for="event_id" class="col-sm-2 col-form-label">Event<span class="text-danger">*</span></label>
                     <div class="col-sm-10">
@@ -70,7 +70,7 @@
                             @foreach ($events as $event)
                                 <option 
                                 {{-- value="{{ $event->id }}">{{ $event->name }} --}}
-                                    value="{{ $event->id }}"{{ $event->id == $participant->event_id ? 'selected' : '' }}>
+                                    value="{{ $event->id }}"{{ $event->id == request()->event_id ? 'selected' : '' }}>
                                     {{ $event->name }}
                                 </option>
                             @endforeach

@@ -47,7 +47,7 @@
                             <tr>
 
                                 <th scope="col">S.No.</th>
-                                <th scope="col"> Event Name</th>
+                                <th scope="col"> Event Type Name</th>
                                 <th class="text-center" width="220">Action</th>
 
                             </tr>

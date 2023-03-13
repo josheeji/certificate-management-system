@@ -50,6 +50,7 @@
                 @if (session('message'))
                     <div class="alert alert-success">{{ session('message') }}</div>
                 @endif
+
                 <div class="card-body">
                     <a href="/admin/participants/create" class="btn btn-primary btn-sm">
                         <h6>Add New Participants</h6>
@@ -61,15 +62,35 @@
                     <a href="/admin/participants/export-participant-pdf" class="btn btn-success btn-sm">
                         <h6>Export Excel</h6>
                     </a>
-                    <br>
-                    <br>
-                   
-                    
+                    <br><br>
+                    <form action="">
+                        <div class="row mb-3">
+                            <div class="col-sm-4">
+                                <select id="event_id" name="event_id" class="custom-select form-control">
+                                    <option value="">Select Event*</option>
+                                    @foreach ($events as $event)
+                                        <option 
+                                        {{-- value="{{ $event->id }}">{{ $event->name }} --}}
+                                            value="{{ $event->id }}"{{ $event->id == request()->event_id ? 'selected' : '' }}>
+                                            {{ $event->name }}
+
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            @error('event_id')
+                                <span class='text-danger'>{{ $message }}</span>
+                            @enderror
+                            <div class="col-md-3 mb-3">
+                                <button type="submit" id="submit_form" class="btn btn-primary btn-fw">Search</button>
+
+                            </div>
+                        </div>
+                    </form>
                     <hr>
                     <table id="myDataTable" class="table table-bordered">
                         <thead>
                             <tr>
-
                                 <th scope="col">S.No.</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Affilated Isntitute</th>

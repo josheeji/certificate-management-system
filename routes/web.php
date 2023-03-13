@@ -60,7 +60,7 @@ Route::prefix('/admin/participants')->group(function(){
     Route::get('/{id}/download-pdf', [ParticipantController::class, 'generatePdf']);
     // Route::get('/export', [ParticipantController::class, 'export'])->name('participants.export');
 
-    Route::post('/create', [ParticipantController::class, 'create']);
+    Route::get('/create', [ParticipantController::class, 'create']);
     Route::post('/', [ParticipantController::class, 'store']);
     Route::get('/{id}/edit', [ParticipantController::class, 'edit']);
     Route::put('/{id}', [ParticipantController::class, 'update']);

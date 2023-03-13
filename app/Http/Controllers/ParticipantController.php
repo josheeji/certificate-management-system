@@ -14,28 +14,23 @@ use Barryvdh\DomPDF\Facade as PDF;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
 use Illuminate\Support\Facades\App;
 use PhpOffice\PhpSpreadsheet\Writer\Pdf as WriterPdf;
+use SebastianBergmann\Template\Template;
 
 class ParticipantController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
-        // $event = Event::findOrFail($id);
         $events = Event::all();
-
-        // $participant = Participant::where('event_id', '=', $id)->get();
-        $participants = Participant::all();
+        $participants = Participant::where('event_id', $request->event_id)->get();
         return view('pages.backend.participant.index', compact('participants', 'events'));
     }
-
-
     public function create(Request $request)
     {
         $events = Event::all();
 
         return view('pages.backend.participant.create', compact('events'));
     }
-
 
     public function store(Request $request)
     {
@@ -44,8 +39,6 @@ class ParticipantController extends Controller
         $participant->save();
         return redirect('/admin/participants')->with('message', 'Participant created Successfully..');
     }
-
-
     public function edit(Request $request, $id)
     {
         $events = Event::all();
@@ -95,19 +88,18 @@ class ParticipantController extends Controller
         $template = $participant->event->eventTemplate;
 
 
-        $resourcePath = '/backend_assets/images/eventTemplates/' .  $template->id . '/';
+        $resourcePath = public_path('/backend_assets/images/eventTemplates/' .  $template->id . '/');
 
-        $customPaper = array(0, 0, 667.00, 954.80);
-        $height = isset($_POST['template_height']) ? $_POST['template_height'] : $customPaper[2];
-
-        $width = isset($_POST['template_width']) ? $_POST['template_width'] : $customPaper[3];
-
-
+        $height = $template->template_height;
+        $widht = $template->template_width;
+        $customPaper = array(0, 0, $height ?: 667.00, $widht ?: 954.80);
+        // $customPaper = array(0, 0, 667.00, 954.80);
 
         $pdf = App::make('dompdf.wrapper');
-        $pdf->loadView('eventTemplates.' . $template->id . '.index', compact('participant', 'resourcePath', 'height', 'width'))
+        $pdf->loadView('eventTemplates.' . $template->id . '.index', compact('participant', 'resourcePath'))
             ->setPaper($customPaper, 'potrait');
-
-        return $pdf->download();
+            // ->setPaper('A4', 'portrait');
+        return $pdf->stream('certificate.pdf');
+        // return $pdf->download();
     }
 }
