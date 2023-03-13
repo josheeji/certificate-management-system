@@ -12,7 +12,8 @@
             margin: 0px;
             max-width: 1000px;
         }
-        img{
+
+        img {
             max-width: 900px;
         }
     </style>
@@ -20,8 +21,9 @@
 
 <body>
     <div class="">
-        <img class="" src="{{ $resourcePath }}/Aakriti Pokharel-pdf.png">
+        <img class="" src="{{ $resourcePath }}Aanchal Agrawal-pdf.png">
         <h1 style="position: absolute; top: 360px; left: 430px;">{{ $participant->name }}</h1>
+
     </div>
 </body>
 
