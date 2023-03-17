@@ -25,8 +25,17 @@ class EventTypeController extends Controller
 
 
         $input = $request->only('name');
-        $event = EventType::create($input);
-        $event->save();
+        $eventType = EventType::create($input);
+        $eventType->save();
+        
+        // $input = $request->only([
+        //     'label' => $request->input('label'),
+        //     'input_field' => $request->input('input_field'),
+        //     'name' => $request->input('name'),
+        //     'placeholder' => $request->input('placeholder'),
+        //     'id' => $request->input('id'),
+        // ]);
+        // $eventType->inputs()->save($input);
 
 
         return redirect('admin/event-types')->with('message', 'Event Type created successfully..');

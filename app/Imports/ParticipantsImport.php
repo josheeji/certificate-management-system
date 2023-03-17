@@ -29,6 +29,7 @@ class ParticipantsImport implements ToCollection, WithHeadingRow
                 'name' => $row['name'],
 
                 'affilated_institute' => $row['affilated_institute'],
+                
                 'post' => $row['post']
             ]);
             

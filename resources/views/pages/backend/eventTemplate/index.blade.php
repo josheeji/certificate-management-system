@@ -55,9 +55,6 @@
                                 <th scope="col">S.No.</th>
                                 <th scope="col">Template Name</th>
                                 <th scope="col">File</th>
-                                <th scope="col">Custom Field</th>
-
-
                                 <th class="text-center" width="170">Action</th>
 
                             </tr>
@@ -69,7 +66,6 @@
                                     <td>{{ $eventTemplate->template_name }}</td>
 
                                     <td>{{ $eventTemplate->url }}</td>
-                                    <td>{{ $eventTemplate->custom_field }}</td>
                                     </td>
 
                                     <td class="text-center">

@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade as PDF;
 use Barryvdh\DomPDF\PDF as DomPDFPDF;
+use Dompdf\Options;
 use Illuminate\Support\Facades\App;
 use PhpOffice\PhpSpreadsheet\Writer\Pdf as WriterPdf;
 use SebastianBergmann\Template\Template;
@@ -37,6 +38,7 @@ class ParticipantController extends Controller
         $input = $request->only('name', 'affilated_institute', 'post', 'event_id');
         $participant = Participant::create($input);
         $participant->save();
+        
         return redirect('/admin/participants')->with('message', 'Participant created Successfully..');
     }
     public function edit(Request $request, $id)
@@ -95,11 +97,12 @@ class ParticipantController extends Controller
         $customPaper = array(0, 0, $height ?: 667.00, $widht ?: 954.80);
         // $customPaper = array(0, 0, 667.00, 954.80);
 
-        $pdf = App::make('dompdf.wrapper');
+        $pdf = App::make('dompdf.wrapper');        
         $pdf->loadView('eventTemplates.' . $template->id . '.index', compact('participant', 'resourcePath'))
             ->setPaper($customPaper, 'potrait');
             // ->setPaper('A4', 'portrait');
         return $pdf->stream('certificate.pdf');
         // return $pdf->download();
+    
     }
 }

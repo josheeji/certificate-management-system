@@ -7,15 +7,29 @@ use App\Http\Controllers\ParticipantController;
 use Illuminate\Support\Facades\Route;
 
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.frontend.app');
 });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::prefix('admin')->middleware(['auth'])->group(function () {
+//frontend
+
+Route::get('/', [App\Http\Controllers\Frontend\FrontendController::class, 'index']);
+
+
+
+
+
+
+
+// Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index']);
 });
 
@@ -37,21 +51,20 @@ Route::prefix('admin/events')->group(function () {
     Route::get('/{id}/edit', [EventController::class, 'edit']);
     Route::put('/{id}', [EventController::class, 'update']);
     Route::delete('/{id}', [EventController::class, 'destroy']);
-
 });
 
-Route::prefix('/admin/event-templates')->group(function(){
+Route::prefix('/admin/event-templates')->group(function () {
     Route::get('/', [EventCertificateTemplateController::class, 'index']);
     Route::get('/create', [EventCertificateTemplateController::class, 'create']);
     Route::post('/', [EventCertificateTemplateController::class, 'store']);
     Route::get('/{id}/edit', [EventCertificateTemplateController::class, 'edit']);
     Route::get('/{id}/download-pdf', [EventCertificateTemplateController::class, 'generatePdf']);
-    
+
     Route::put('/{id}', [EventCertificateTemplateController::class, 'update']);
     Route::delete('/{id}', [EventCertificateTemplateController::class, 'destroy']);
 });
 
-Route::prefix('/admin/participants')->group(function(){
+Route::prefix('/admin/participants')->group(function () {
     Route::get('/', [ParticipantController::class, 'index']);
 
     Route::get('/import', [ParticipantController::class, 'importExcel']);
