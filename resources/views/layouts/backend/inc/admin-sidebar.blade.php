@@ -41,6 +41,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/admin/participant-types">
+                        <i class="bi bi-circle"></i><span> Participant Type</span>
+                    </a>
+                </li>
+                <li>
                     <a href="/admin/participants">
                         <i class="bi bi-circle"></i><span> Participant</span>
                     </a>

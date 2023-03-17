@@ -7,59 +7,50 @@ use Illuminate\Http\Request;
 
 class ParticipantTypeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+        $participantTypes = ParticipantType::all();
+        return view('pages.backend.participantType.index', compact('participantTypes'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        //
+        return view('pages.backend.participantType.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+
     public function store(Request $request)
     {
-        //
+        $input = $request->only('name');
+        $participantType = ParticipantType::create($input);
+        $participantType->save();
+        return redirect('admin/participant-types')->with('message', 'Participant Created Successfully..');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(ParticipantType $participantType)
+    public function edit(Request $request, $id)
     {
-        //
+        $participantType= ParticipantType::findOrFail($id);
+        return view('pages.backend.participantType.edit', compact('participantType'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(ParticipantType $participantType)
+
+    public function update(Request $request, $id)
     {
-        //
+        $participantType= ParticipantType::findOrFail($id);
+        $participantType->name = $request->name;
+        $participantType->update();
+        return redirect('admin/participant-types')->with('message', 'Participant Type Updated Successfully..');
+       
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, ParticipantType $participantType)
-    {
-        //
-    }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(ParticipantType $participantType)
+    public function destroy($id)
     {
-        //
+        $participantType= ParticipantType::findOrFail($id);
+        $participantType->delete();
+        return redirect('admin/participant-types')->with('message', 'Participant Type Deleted Successfully..');
+
     }
 }
