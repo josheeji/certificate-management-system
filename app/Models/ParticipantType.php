@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ParticipantType extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'name'
+    ];
 }
