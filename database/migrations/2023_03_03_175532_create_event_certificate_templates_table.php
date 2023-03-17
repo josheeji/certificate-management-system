@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('template_name');
             $table->string('url');
-            $table->json('custom_field')->nullable();
             $table->timestamps();
         });
     }

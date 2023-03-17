@@ -48,6 +48,9 @@
 
                                 <th scope="col">S.No.</th>
                                 <th scope="col"> Event Type Name</th>
+                                <th scope="col">Custom Field</th>
+
+
                                 <th class="text-center" width="220">Action</th>
 
                             </tr>
@@ -57,6 +60,7 @@
                                 <tr>
                                     <td>{{ $eventType->id }} </td>
                                     <td>{{ $eventType->name }} </td>
+                                    <td>{{ $eventType->custom_field }}</td>
 
                                     <td class="text-center">
                                         <a title="Edit" href="/admin/event-types/{{ $eventType->id }}/edit"
@@ -100,6 +104,4 @@
             });
         });
     </script>
-
-
 @endsection

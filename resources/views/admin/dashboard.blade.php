@@ -8,6 +8,8 @@
 
         <div class="card">
             <div class="card-body">
+                <h5 class="card-title">
+                </h5>
                 <form class="form-sample" action="" method="POST" enctype="multipart/form-data">
                     @csrf
                     @foreach ($data as $key => $item)
@@ -41,11 +43,8 @@
                                     <select id="{{ $item['id'] }}" name="{{ $item['name'] }}"
                                         class="custom-select form-control">
                                         <option value="">Select a Option</option>
-                                        <option value="volvo">Volvo</option>
-                                        <option value="saab">Saab</option>
-                                        <option value="fiat">Fiat</option>
-
-                                    </select>
+                                        
+                                   </select>
                                 </div>
                             </div>
                         @endif

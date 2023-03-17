@@ -58,7 +58,7 @@
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.2/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js"></script>
 
     {{-- <style>
         .dataTables_wrapper .dataTables_paginate .paginate_button{
@@ -83,8 +83,8 @@
 </head>
 
 <body class="">
-    @include('layouts.inc.admin-sidebar')
-    @include('layouts.inc.admin-header')
+    @include('layouts.backend.inc.admin-sidebar')
+    @include('layouts.backend.inc.admin-header')
 
     <main id="main" class="main">
         @yield('content')
@@ -99,7 +99,7 @@
         </div> --}}
 
     </main><!-- End #main -->
-    @include('layouts.inc.admin-footer')
+    @include('layouts.backend.inc.admin-footer')
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 
@@ -145,7 +145,7 @@
     </script>
 
 
-@yield('scripts')
+    @yield('scripts')
 
 
 </body>

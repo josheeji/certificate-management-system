@@ -23,6 +23,6 @@ class DashboardController extends Controller
              "placeholder" => "e.g. of Achievement", "id" => "title3"
          ),
      ];
-      return view('admin.dashboard', compact('data'));      
+      return view('admin.create', compact('data'));      
    }
 }
