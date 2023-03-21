@@ -11,13 +11,19 @@ class EventCertificateTemplate extends Model
 
     protected $fillable = [
         'url', 'custom_field', 'template_name', 'template_width',
-        'template_height'
+        'template_height', 'participantType_id',
+        'event_id'
     ];
 
+    
     public function events()
     {
-        return $this->hasMany(Event::class, 'event_id');
+        return $this->belongsTo(Event::class, 'event_id');
     }
 
+    public function participantType()
+    {
+        return $this->belongsTo(ParticipantType::class, 'participantType_id');
+    }
 
 }

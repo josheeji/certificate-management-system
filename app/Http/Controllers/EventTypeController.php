@@ -21,11 +21,13 @@ class EventTypeController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {       
 
 
         $input = $request->only('name');
+        
         $eventType = EventType::create($input);
+
         $eventType->save();
         
         // $input = $request->only([

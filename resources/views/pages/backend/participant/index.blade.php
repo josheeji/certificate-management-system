@@ -69,8 +69,7 @@
                                 <select id="event_id" name="event_id" class="custom-select form-control">
                                     <option value="">Select Event*</option>
                                     @foreach ($events as $event)
-                                        <option 
-                                        {{-- value="{{ $event->id }}">{{ $event->name }} --}}
+                                        <option {{-- value="{{ $event->id }}">{{ $event->name }} --}}
                                             value="{{ $event->id }}"{{ $event->id == request()->event_id ? 'selected' : '' }}>
                                             {{ $event->name }}
 
@@ -91,11 +90,12 @@
                     <table id="myDataTable" class="table table-bordered">
                         <thead>
                             <tr>
-                                <th scope="col">S.No.</th>
+                                <th scope="col" width="0.5%">S.No.</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Affilated Isntitute</th>
                                 <th scope="col">Post</th>
-                                <th scope="col">Event</th>
+                                <th scope="col">Event Name</th>
+                                <th scope="col">Participant Type</th>
                                 <th class="text-center" width="170">Action</th>
 
                             </tr>
@@ -105,10 +105,13 @@
                                 <tr>
                                     <td>{{ $participant->id }}</td>
                                     <td>{{ $participant->name }}</td>
-
                                     <td>{{ $participant->affilated_institute }}</td>
                                     <td>{{ $participant->post }}</td>
+
+
                                     <td>{{ $participant->event->name }}</td>
+                                    <td>{{ $participant->participantType->name }}</td>
+
 
 
                                     <td class="text-center">
@@ -119,10 +122,6 @@
 
                                         <a title="Edit" href="/admin/participants/{{ $participant->id }}/edit"
                                             class="btn btn-icon btn-circle btn-light"><i class="bi bi-pencil"></i></a>
-
-                                        {{-- <a title="Delete" href="/admin/events/{{ $event->id }}" 
-                                            class="btn btn-icon btn-danger btn-circle delete"><i
-                                                class="bi bi-trash-fill"></i></a> --}}
 
                                         <button title="Delete" type="button"
                                             class="btn btn-icon btn-danger btn-circle delete deleteEventBtn"

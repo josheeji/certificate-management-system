@@ -25,6 +25,5 @@ class Event extends Model
     {
         return $this->belongsTo(EventCertificateTemplate::class, 'template_id');
     }
-
-
+    
 }

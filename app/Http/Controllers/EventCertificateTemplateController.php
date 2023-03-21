@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use App\Models\EventCertificateTemplate;
 use App\Models\Participant;
+use App\Models\ParticipantType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
@@ -15,18 +17,21 @@ use php;
 
 class EventCertificateTemplateController extends Controller
 {
-    public function __construct(private readonly Client $client)
-    {
-    }
+
     public function index()
     {
+        $events = Event::all();
+        
+        $participantTypes = ParticipantType::all();
         $eventTemplates = EventCertificateTemplate::all();
-        return view('pages.backend.eventTemplate.index', compact('eventTemplates'));
+        return view('pages.backend.eventTemplate.index', compact('eventTemplates', 'events', 'eventTemplates'));
     }
     public function create()
     {
+        $events = Event::all();
         $eventTemplate = EventCertificateTemplate::all();
-        return view('pages.backend.eventTemplate.create', compact('eventTemplate'));
+        $participantTypes = ParticipantType::all();
+        return view('pages.backend.eventTemplate.create', compact('eventTemplate', 'events', 'participantTypes'));
     }
     public function store(Request $request)
     {
@@ -34,7 +39,9 @@ class EventCertificateTemplateController extends Controller
             'custom_field',
             'template_name',
             'template_width',
-            'template_height'
+            'template_height',
+            'participantType_id',
+            'event_id'
         );
 
         $file = $request->file('url');
@@ -59,8 +66,12 @@ class EventCertificateTemplateController extends Controller
     }
     public function edit(Request $request, $id)
     {
+        $events = Event::all();
+
+        $participantTypes = ParticipantType::all();
+
         $evenntTemplate = EventCertificateTemplate::findOrFail($id);
-        return view('pages.backend.eventTemplate.edit', compact('evenntTemplate'));
+        return view('pages.backend.eventTemplate.edit', compact('evenntTemplate', 'events', 'participantTypes'));
     }
     public function update(Request $request, $id)
     {
@@ -69,6 +80,8 @@ class EventCertificateTemplateController extends Controller
         $evenntTemplate->custom_field = $request->custom_field;
         $evenntTemplate->template_height = $request->template_height;
         $evenntTemplate->template_width = $request->template_width;
+        $evenntTemplate->participantType_id = $request->participantType_id;
+        $evenntTemplate->event_id = $request->event_id;
 
         if ($request->hasFile('url')) {
             $destination = ('backend_assets/images/eventTemplates/' . $id) . $evenntTemplate->url;
@@ -104,6 +117,4 @@ class EventCertificateTemplateController extends Controller
     public function destroy()
     {
     }
-
-
 }

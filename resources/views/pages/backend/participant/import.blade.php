@@ -41,6 +41,27 @@
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
                 </div>
+
+                <div class="row mb-3">
+                    <label for="participantType_id" class="col-sm-2 col-form-label">Participant Type<span
+                            class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <select id="participantType_id" name="participantType_id" class="custom-select form-control">
+                            <option value="">Participant Type</option>
+                            @foreach ($participantTypes as $participantType)
+                            
+                                <option value="{{ $participantType->id }}">{{ $participantType->name }}
+
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('participantType_id')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
+
+
                 <div class="row mb-3">
                     <label for="excel_file" class="col-sm-2 col-form-label">File<span class="text-danger">*</span></label>
                     <div class="col-sm-10">

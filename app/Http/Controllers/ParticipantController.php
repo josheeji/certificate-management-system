@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Response;
 
 use App\Models\Event;
 use App\Models\Participant;
+use App\Models\ParticipantType;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
 use Barryvdh\DomPDF\Facade as PDF;
@@ -22,31 +23,38 @@ class ParticipantController extends Controller
 
     public function index(Request $request)
     {
+        // $participantTypes = ParticipantType::all();
         $events = Event::all();
-        $participants = Participant::where('event_id', $request->event_id)->get();
+        $participants = Participant::where('event_id', $request->event_id)
+            // ->with('participantType')
+            ->get();
         return view('pages.backend.participant.index', compact('participants', 'events'));
     }
     public function create(Request $request)
     {
         $events = Event::all();
+        $participantTypes = ParticipantType::all();
 
-        return view('pages.backend.participant.create', compact('events'));
+        return view('pages.backend.participant.create', compact('events', 'participantTypes'));
     }
 
     public function store(Request $request)
     {
-        $input = $request->only('name', 'affilated_institute', 'post', 'event_id');
+        $input = $request->only('name', 'affilated_institute', 'post', 'event_id', 'participantType_id');
         $participant = Participant::create($input);
         $participant->save();
-        
+
         return redirect('/admin/participants')->with('message', 'Participant created Successfully..');
     }
+
     public function edit(Request $request, $id)
     {
         $events = Event::all();
+        $participantTypes = ParticipantType::all();
+
 
         $participant = Participant::findOrFail($id);
-        return view('pages.backend.participant.edit', compact('participant', 'events'));
+        return view('pages.backend.participant.edit', compact('participant', 'events', 'participantTypes'));
     }
 
     public function update(Request $request, $id)
@@ -56,6 +64,7 @@ class ParticipantController extends Controller
         $participant->affilated_institute = $request->affilated_institute;
         $participant->post = $request->post;
         $participant->event_id = $request->event_id;
+        $participant->participantType_id = $request->participantType_id;
 
         $participant->update();
 
@@ -72,22 +81,31 @@ class ParticipantController extends Controller
     public function importExcel()
     {
         $events = Event::all();
+        $participantTypes= ParticipantType::all();
 
-        return view('pages.backend.participant.import', compact('events'));
+        return view('pages.backend.participant.import', compact('events', 'participantTypes'));
     }
+
+
 
     public function storeExcel(Request $request)
     {
         $eventId = $request->input('event_id');
-        $file = $request->file('excel_file');
-        Excel::import(new ParticipantsImport($eventId), $file);
+        $participantTypeId = $request->input('participantType_id');
+
+        $file = $request->file('excel_file');        
+        Excel::import(new ParticipantsImport($eventId, $participantTypeId), $file);
         return redirect('/admin/participants')->with('message', 'File Uploaded Successfully');
     }
+
+
 
     public function generatePdf(Request $request, $id)
     {
         $participant = Participant::findOrFail($id);
+        // dd($participant);
         $template = $participant->event->eventTemplate;
+        // dd($template);
 
 
         $resourcePath = public_path('/backend_assets/images/eventTemplates/' .  $template->id . '/');
@@ -97,12 +115,11 @@ class ParticipantController extends Controller
         $customPaper = array(0, 0, $height ?: 667.00, $widht ?: 954.80);
         // $customPaper = array(0, 0, 667.00, 954.80);
 
-        $pdf = App::make('dompdf.wrapper');        
+        $pdf = App::make('dompdf.wrapper');
         $pdf->loadView('eventTemplates.' . $template->id . '.index', compact('participant', 'resourcePath'))
             ->setPaper($customPaper, 'potrait');
-            // ->setPaper('A4', 'portrait');
+        // ->setPaper('A4', 'portrait');
         return $pdf->stream('certificate.pdf');
-        // return $pdf->download();
-    
+        // return $pdf->download();    
     }
 }

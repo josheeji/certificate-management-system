@@ -11,17 +11,17 @@ class EventController extends Controller
 {
     public function index()
     {
-        $eventTemplates = EventCertificateTemplate::all();
+        // $eventTemplates = EventCertificateTemplate::all();
         $eventTypes = EventType::all();
         $events = Event::all();
-        return view('pages.backend.event.index', compact('events', 'eventTypes', 'eventTemplates'));
+        return view('pages.backend.event.index', compact('events', 'eventTypes'));
     }
 
     public function create()
     {
-        $eventTemplates = EventCertificateTemplate::all();
+        // $eventTemplates = EventCertificateTemplate::all();
         $eventTypes = EventType::all();
-        return view('pages.backend.event.create', compact('eventTypes', 'eventTemplates'));
+        return view('pages.backend.event.create', compact('eventTypes'));
     }
 
     public function store(Request $request)
@@ -34,12 +34,12 @@ class EventController extends Controller
 
     public function edit(Request $request, $id)
     {
-        $eventTemplates = EventCertificateTemplate::all();
+        // $eventTemplates = EventCertificateTemplate::all();
 
         $eventTypes = EventType::all();
         $event = Event::findOrFail($id);
 
-        return view('pages.backend.event.edit', compact('event', 'eventTypes', 'eventTemplates'));
+        return view('pages.backend.event.edit', compact('event', 'eventTypes'));
     }
 
     public function update(Request $request, $id)
