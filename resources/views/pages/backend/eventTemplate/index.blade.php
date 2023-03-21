@@ -52,9 +52,12 @@
                         <thead>
                             <tr>
 
-                                <th scope="col">S.No.</th>
+                                <th scope="col" width="50" >S.No.</th>
                                 <th scope="col">Template Name</th>
                                 <th scope="col">File</th>
+
+                                <th scope="col">Event Name</th>
+                                <th scope="col">Participant Type</th>
                                 <th class="text-center" width="170">Action</th>
 
                             </tr>
@@ -66,6 +69,10 @@
                                     <td>{{ $eventTemplate->template_name }}</td>
 
                                     <td>{{ $eventTemplate->url }}</td>
+                                    <td>{{ $eventTemplate->events->name }}</td>
+
+                                    {{-- <td>{{ $eventTemplate->event->name }}</td> --}}
+                                    <td>{{ $eventTemplate->participantType->name }}</td>
                                     </td>
 
                                     <td class="text-center">

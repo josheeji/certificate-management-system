@@ -15,7 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('template_name');
             $table->string('url');
+            $table->unsignedBigInteger('event_id');
+            $table->unsignedBigInteger('participantType_id');
             $table->timestamps();
+
+            $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            $table->foreign('participantType_id')->references('id')->on('participant_types')->onDelete('cascade');
+
         });
     }
 

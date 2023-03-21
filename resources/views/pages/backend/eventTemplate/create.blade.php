@@ -36,7 +36,7 @@
                     @enderror
                 </div>
 
-               
+
 
                 <div class="row mb-3">
                     <label for="url" class="col-sm-2 col-form-label">HTML File<span
@@ -50,23 +50,8 @@
                     @enderror
                 </div>
 
-
-
-                {{-- <div class="row mb-3">
-                    <label for="custom_field" class="col-sm-2 col-form-label">CUstom Field<span
-                            class="text-danger">*</span></label>
-                    <div class="col-sm-10">
-                        <input type="text" name="custom_field" class="form-control" id="custom_field"
-                            placeholder="Custom Field" value="{{ old('custom_field') }}">
-                    </div>
-                    @error('custom_field')
-                        <span class='text-danger'>{{ $message }}</span>
-                    @enderror
-                </div> --}}
-
                 <div class="row mb-3">
-                    <label for="template_files" class="col-sm-2 col-form-label">Template Files<span
-                            class="text-danger">*</span></label>
+                    <label for="template_files" class="col-sm-2 col-form-label">Template Files</label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control" id="template_files" name="template_files[]" multiple
                             value="{{ old('template_files') }}">
@@ -75,9 +60,45 @@
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
                 </div>
+
                 <div class="row mb-3">
-                    <label for="template_height" class="col-sm-2 col-form-label">Template Height<span
+                    <label for="event_id" class="col-sm-2 col-form-label">Event<span class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <select id="event_id" name="event_id" class="custom-select form-control">
+                            <option value="">Select Event</option>
+                            @foreach ($events as $event)
+                                <option value="{{ $event->id }}">{{ $event->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('event_id')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="row mb-3">
+                    <label for="participantType_id" class="col-sm-2 col-form-label">Participant Type<span
                             class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <select id="participantType_id" name="participantType_id" class="custom-select form-control">
+                            <option value="">Select Participant Type</option>
+                            @foreach ($participantTypes as $participantType)
+                                <option value="{{ $participantType->id }}">{{ $participantType->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('participantType_id')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
+
+
+
+
+                <div class="row mb-3">
+                    <label for="template_height" class="col-sm-2 col-form-label">Template Height</label>
                     <div class="col-sm-10">
                         <input type="text" name="template_height" class="form-control" id="template_height"
                             placeholder="Template Height" value="{{ old('template_height') }}">
@@ -88,8 +109,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <label for="template_width" class="col-sm-2 col-form-label">Template Width<span
-                            class="text-danger">*</span></label>
+                    <label for="template_width" class="col-sm-2 col-form-label">Template Width</label>
                     <div class="col-sm-10">
                         <input type="text" name="template_width" class="form-control" id="template_width"
                             placeholder="Template Width" value="{{ old('template_width') }}">

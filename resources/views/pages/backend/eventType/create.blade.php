@@ -31,7 +31,7 @@
                 @csrf
                 <div class="row mb-3">
                     <label for="name" class="col-sm-2 col-form-label">Name<span class="text-danger">*</span></label>
-                    <div class="col-sm-10">
+                    <div class="col-sm-5">
                         <input type="text" name="name" class="form-control" id="name"
                             placeholder="Event Type Name" value="{{ old('name') }}">
                     </div>
@@ -51,47 +51,49 @@
                     <table>
                         <thead>
                             <tr>
+                                <th scope="col">ID </th>
                                 <th scope="col">Label</th>
                                 <th scope="col">Type</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Placeholder </th>
-                                <th scope="col">ID </th>
                                 {{-- <th class="text-center" width="170">Action</th> --}}
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+
+                                <td>
+                                    {{-- <label for="id"> ID </label> --}}
+                                    {{-- <input type="text" name="id" id="id" placeholder="id" value=""
+                                        class="custom-select form-control"> --}}
+                                </td>
                                 <td>
                                     {{-- <label for="label"> Label </label> --}}
-                                    <input type="text" name="label" id="label" placeholder="label" value=""
-                                        class="custom-select form-control">
+                                    {{-- <input type="text" name="label" id="label" placeholder="label" value=""
+                                        class="custom-select form-control"> --}}
 
                                 </td>
                                 <td>
                                     {{-- <label for="type"> Type </label> --}}
-                                    <select name="input_field" aria-placeholder="Select Input Type"
+                                    {{-- <select name="input_field" aria-placeholder="Select Input Type"
                                         class="custom-select form-control">
                                         @foreach (AbstractInputFile::toArray() as $value => $label)
                                             <option value="<?= $value ?>"><?= $label ?></option>
                                         @endforeach
-                                    </select>
+                                    </select> --}}
                                 </td>
                                 <td>
                                     {{-- <label for="name"> Name </label> --}}
-                                    <input type="text" name="name" id="name" placeholder="name" value=""
-                                        class="custom-select form-control">
+                                    {{-- <input type="text" name="name" id="name" placeholder="name" value=""
+                                        class="custom-select form-control"> --}}
                                 </td>
                                 <td>
                                     {{-- <label for="placeholder"> Placeholder </label> --}}
-                                    <input type="text" name="placeholder" id="placeholder" placeholder="placeholder"
-                                        value="" class="custom-select form-control">
+                                    {{-- <input type="text" name="placeholder" id="placeholder" placeholder="placeholder"
+                                        value="" class="custom-select form-control"> --}}
                                 </td>
-                                <td>
-                                    {{-- <label for="id"> ID </label> --}}
-                                    <input type="text" name="id" id="id" placeholder="id" value=""
-                                        class="custom-select form-control">
-                                </td>
+
 
                             </tr>
                         </tbody>
@@ -108,4 +110,3 @@
         </div>
     </div>
 @endsection
-

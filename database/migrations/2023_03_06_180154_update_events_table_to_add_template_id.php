@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('events', function (Blueprint $table) {
-            $table->unsignedBigInteger('template_id')->nullable();
-            $table->foreign('template_id')->references('id')->on('event_certificate_templates')->onDelete('cascade');
-        });
+        // Schema::table('events', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('template_id')->nullable();
+        //     $table->foreign('template_id')->references('id')->on('event_certificate_templates')->onDelete('cascade');
+        // });
     }
 
     /**
@@ -22,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('add_template_id', function (Blueprint $table) {
-            //
-        });
+        // Schema::table('events', function (Blueprint $table) {
+        //     //
+        // });
     }
 };

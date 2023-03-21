@@ -56,7 +56,7 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Organizer Name</th>
                                 <th scope="col">Event Type</th>
-                                <th scope="col">Event Template</th>
+                                {{-- <th scope="col">Event Template</th> --}}
                                 <th scope="col">Start</th>
                                 <th scope="col">End</th>
                                 {{-- <th scope="col">Description</th>
@@ -75,7 +75,7 @@
 
                                     <td>{{ $event->organizer_name }}</td>
                                     <td>{{ $event->eventType->name }}</td>
-                                    <td>{{ $event->eventTemplate->template_name }}</td>
+                                    {{-- <td>{{ $event->eventTemplate->template_name }}</td> --}}
 
                                     <td>{{ $event->start_date }}</td>
                                     <td>{{ $event->end_date }}</td>

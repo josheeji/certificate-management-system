@@ -40,13 +40,13 @@
                 </h5>
 
                 <!-- Default Table -->
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        @foreach ($errors->all() as $error)
-                            <div>{{ $error }}</div>
-                        @endforeach
-                    </div>
-                @endif
+             @if ($errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <div>{{ $error }}</div>
+                    @endforeach
+                </div>
+            @endif
                 @if (session('message'))
                     <div class="alert alert-success">{{ session('message') }}</div>
                 @endif

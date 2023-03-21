@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('affilated_institute')->nullable();
             $table->string('post');
             $table->unsignedBigInteger('event_id');
+            $table->unsignedBigInteger('participantType_id')->nullable();
 
             $table->timestamps();
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
+            $table->foreign('participantType_id')->references('id')->on('participant_types')->onDelete('cascade');
         });
     }
 
@@ -28,6 +30,12 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('participants');
+        Schema::table('participants', function (Blueprint $table) {
+            $table->dropColumn('participantType_id');
+            $table->dropColumn('event_id');
+
+            $table->dropForeign(['event_id']);
+            $table->dropColumn('event_id');
+        });
     }
 };

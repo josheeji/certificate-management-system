@@ -91,7 +91,7 @@
                     @enderror
                 </div>
 
-                <div class="row mb-3">
+                {{-- <div class="row mb-3">
                     <label for="template_id" class="col-sm-2 col-form-label">Event Template<span
                             class="text-danger">*</span></label>
                     <div class="col-sm-10">
@@ -105,10 +105,10 @@
                             @endforeach
                         </select>
                     </div>
-                    @error('eventTemplate')
+                    @error('template_id')
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
-                </div>
+                </div> --}}
 
                 <div class="row mb-3">
                     <label for="description" class="col-sm-2 col-form-label">Description<span

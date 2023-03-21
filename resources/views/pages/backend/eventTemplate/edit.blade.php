@@ -69,9 +69,46 @@
                             class="text-danger">*</span></label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control" id="template_files" name="template_files[]" multiple
-                            value="{{ old('template_files')  ?? $evenntTemplate->template_files}}">
+                            value="{{ old('template_files') ?? $evenntTemplate->template_files }}">
                     </div>
                     @error('template_files')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="row mb-3">
+                    <label for="participantType_id" class="col-sm-2 col-form-label">Participation Type<span
+                            class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <select id="participantType_id" name="participantType_id" class="custom-select form-control">
+                            <option>Select Participant Type</option>
+                            @foreach ($participantTypes as $participantType)
+                                <option
+                                    value="{{ $participantType->id }}"{{ $participantType->id == $eventTemplate->participantType_id ? 'selected' : '' }}>
+                                    {{ $participantType->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('participantType_id')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="row mb-3">
+                    <label for="event_id" class="col-sm-2 col-form-label">Event <span class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <select id="event_id" name="event_id" class="custom-select form-control">
+                            <option>Select Event</option>
+                            @foreach ($events as $event)
+                                <option
+                                    value="{{ $event->id }}"{{ $event->id == $event->eventTemplate_id ? 'selected' : '' }}>
+                                    {{ $eventTemplate->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    @error('event_id')
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
                 </div>
@@ -81,7 +118,8 @@
                             class="text-danger">*</span></label>
                     <div class="col-sm-10">
                         <input type="text" name="template_height" class="form-control" id="template_height"
-                            placeholder="Template Height" value="{{ old('template_height') ?? $evenntTemplate->template_height }}">
+                            placeholder="Template Height"
+                            value="{{ old('template_height') ?? $evenntTemplate->template_height }}">
                     </div>
                     @error('template_height')
                         <span class='text-danger'>{{ $message }}</span>
@@ -93,7 +131,8 @@
                             class="text-danger">*</span></label>
                     <div class="col-sm-10">
                         <input type="text" name="template_width" class="form-control" id="template_width"
-                            placeholder="Template Width" value="{{ old('template_width') ?? $evenntTemplate->template_width }}">
+                            placeholder="Template Width"
+                            value="{{ old('template_width') ?? $evenntTemplate->template_width }}">
                     </div>
                     @error('template_width')
                         <span class='text-danger'>{{ $message }}</span>
