@@ -89,23 +89,6 @@
                     @enderror
                 </div>
 
-                {{-- <div class="row mb-3">
-                    <label for="template_id" class="col-sm-2 col-form-label">Event Template<span
-                            class="text-danger">*</span></label>
-                    <div class="col-sm-10">
-                        <select id="template_id" name="template_id" class="custom-select form-control">
-                            <option value="">Select a Event Type</option>
-                            @foreach ($eventTemplates as $eventTemplate)
-                                <option value="{{ $eventTemplate->id }}">{{ $eventTemplate->template_name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                    @error('eventTemplate')
-                        <span class='text-danger'>{{ $message }}</span>
-                    @enderror
-                </div> --}}
-
                 <div class="row mb-3">
                     <label for="description" class="col-sm-2 col-form-label">Description<span
                             class="text-danger">*</span></label>

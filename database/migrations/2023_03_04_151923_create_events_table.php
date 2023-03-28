@@ -20,9 +20,6 @@ return new class extends Migration
             $table->date('end_date');
             // $table->text('certificate_template')->nullable();
             $table->unsignedBigInteger('eventType_id');
-
-
-
             $table->timestamps();
             $table->foreign('eventType_id')->references('id')->on('event_types')->onDelete('cascade');
         });

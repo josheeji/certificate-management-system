@@ -21,6 +21,8 @@ class EventCertificateTemplate extends Model
         return $this->belongsTo(Event::class, 'event_id');
     }
 
+    
+
     public function participantType()
     {
         return $this->belongsTo(ParticipantType::class, 'participantType_id');

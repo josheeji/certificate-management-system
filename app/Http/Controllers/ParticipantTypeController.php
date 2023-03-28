@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ParticipationTypeStore;
+use App\Http\Requests\ParticipationTypeUpdate;
 use App\Models\ParticipantType;
 use Illuminate\Http\Request;
 
@@ -21,7 +23,7 @@ class ParticipantTypeController extends Controller
     }
 
 
-    public function store(Request $request)
+    public function store(ParticipationTypeStore $request)
     {
         $input = $request->only('name');
         $participantType = ParticipantType::create($input);
@@ -36,7 +38,7 @@ class ParticipantTypeController extends Controller
     }
 
 
-    public function update(Request $request, $id)
+    public function update(ParticipationTypeUpdate $request, $id)
     {
         $participantType= ParticipantType::findOrFail($id);
         $participantType->name = $request->name;

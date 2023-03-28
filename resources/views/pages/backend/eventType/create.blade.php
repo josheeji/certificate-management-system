@@ -1,6 +1,6 @@
 @php
     use App\Contracts\AbstractInputFile;
-    // $fileInputs = AbstractInputFile::toArray();
+    $inputTypes = AbstractInputFile::toArray();
 @endphp
 
 @extends('layouts.master')
@@ -39,11 +39,7 @@
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
                 </div>
-
-                {{-- <a href="" class="btn btn-primary btn-sm">
-                    <h6>Add New Row</h6>
-                </a> --}}
-                <a href="#" class="btn btn-primary btn-fw" id="add_row_btn">Add Row</a>
+                <a href="#" class="btn btn-primary btn-fw" id="add_row_btn">Custom Field</a>
 
 
                 <div class="row mb-3">
@@ -51,47 +47,57 @@
                     <table>
                         <thead>
                             <tr>
-                                <th scope="col">ID </th>
                                 <th scope="col">Label</th>
                                 <th scope="col">Type</th>
+                                <th></th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Placeholder </th>
-                                {{-- <th class="text-center" width="170">Action</th> --}}
+                                <th scope="col">Tags </th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-
-                                <td>
-                                    {{-- <label for="id"> ID </label> --}}
-                                    {{-- <input type="text" name="id" id="id" placeholder="id" value=""
-                                        class="custom-select form-control"> --}}
-                                </td>
                                 <td>
                                     {{-- <label for="label"> Label </label> --}}
-                                    {{-- <input type="text" name="label" id="label" placeholder="label" value=""
-                                        class="custom-select form-control"> --}}
+                                    <input type="text" name="label" id="label" placeholder="label" value=""
+                                        class="custom-select form-control">
 
                                 </td>
                                 <td>
                                     {{-- <label for="type"> Type </label> --}}
-                                    {{-- <select name="input_field" aria-placeholder="Select Input Type"
+                                    <select name="input_field" aria-placeholder="Select Input Type"
                                         class="custom-select form-control">
                                         @foreach (AbstractInputFile::toArray() as $value => $label)
                                             <option value="<?= $value ?>"><?= $label ?></option>
                                         @endforeach
-                                    </select> --}}
+
+
+                                    </select>
+
                                 </td>
                                 <td>
+                                    <div class="form-group">
+                                        <label for="mandatory">Is it mandatory?</label>
+                                        <input type="checkbox" id="mandatory" name="mandatory" value="1">
+                                    </div>
+                                </td>
+
+                                <td>
                                     {{-- <label for="name"> Name </label> --}}
-                                    {{-- <input type="text" name="name" id="name" placeholder="name" value=""
-                                        class="custom-select form-control"> --}}
+                                    <input type="text" name="name" id="name" placeholder="name" value=""
+                                        class="custom-select form-control">
                                 </td>
                                 <td>
                                     {{-- <label for="placeholder"> Placeholder </label> --}}
-                                    {{-- <input type="text" name="placeholder" id="placeholder" placeholder="placeholder"
-                                        value="" class="custom-select form-control"> --}}
+                                    <input type="text" name="placeholder" id="placeholder" placeholder="placeholder"
+                                        value="" class="custom-select form-control">
+                                </td>
+                                <br>
+
+                                <td>
+                                    <input type="text" name="tags" placeholder="Tags"
+                                        class="tm-input form-control tm-input-info" />
                                 </td>
 
 
@@ -109,4 +115,13 @@
             <!-- End Horizontal Form -->
         </div>
     </div>
+
+@endsection
+
+@section('scripts')
+
+    <script type="text/javascript">
+        $(".tm-input").tagsManager();
+    </script>
+    
 @endsection

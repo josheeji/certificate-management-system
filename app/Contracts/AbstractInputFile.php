@@ -1,15 +1,18 @@
 <?php
 
 namespace App\Contracts;
-abstract class  AbstractInputFile{
 
-    const INPUT_TYPE_TEXT = "text";
-    const INPUT_TYPE_NUMBER = "number";
-    const INPUT_TYPE_SELECT = "select";
-    const INPUT_TYPE_FILE = "file";
-    const INPUT_TYPE_CHECKBOX = "checkbox";
-    const INPUT_TYPE_RADIO = "radio";
-    const INPUT_TYPE_PASSWORD = "password";
+abstract class  AbstractInputFile
+{
+
+    const INPUT_TYPE_TEXT = "Text";
+    const INPUT_TYPE_NUMBER = "Number";
+    const INPUT_TYPE_SELECT = "Select";
+    const INPUT_TYPE_FILE = "File";
+    const INPUT_TYPE_CHECKBOX = "Checkbox";
+    const INPUT_TYPE_RADIO = "Radio";
+    const INPUT_TYPE_DATE = "DateTime";
+    // const INPUT_TYPE_PASSWORD = "password";
 
 
     public static function toArray()
@@ -21,13 +24,7 @@ abstract class  AbstractInputFile{
             self::INPUT_TYPE_FILE => self::INPUT_TYPE_FILE,
             self::INPUT_TYPE_CHECKBOX => self::INPUT_TYPE_CHECKBOX,
             self::INPUT_TYPE_RADIO => self::INPUT_TYPE_RADIO,
-            self::INPUT_TYPE_PASSWORD => self::INPUT_TYPE_PASSWORD,
+            self::INPUT_TYPE_DATE => self::INPUT_TYPE_DATE,
         ];
     }
-    
-
 }
-
-
-
-

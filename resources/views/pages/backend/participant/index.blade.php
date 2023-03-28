@@ -8,16 +8,16 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <form action={{ '/admin/events' }} method="POST" id="delete_form">
+                <form action={{ '/admin/participants' }} method="POST" id="delete_form">
                     @csrf
                     @method('delete')
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Delete Event</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Delete Participation</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="event_delete_id" id="delete_event_id">
-                        <h5>Are you sure, you want to delete this category ?</h5>
+                        <input type="hidden" name="participation_delete_id" id="delete_participation_id">
+                        <h5>Are you sure, you want to delete this Participation ?</h5>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -124,7 +124,7 @@
                                             class="btn btn-icon btn-circle btn-light"><i class="bi bi-pencil"></i></a>
 
                                         <button title="Delete" type="button"
-                                            class="btn btn-icon btn-danger btn-circle delete deleteEventBtn"
+                                            class="btn btn-icon btn-danger btn-circle delete deleteParticipantsBtn"
                                             value="{{ $participant->id }}"><i class="bi bi-trash-fill"></i></button>
                                     </td>
                                 </tr>
@@ -144,13 +144,14 @@
 
     <script>
         $(document).ready(function() {
-            $('.deleteEventBtn').click(function(e) {
+            $('.deleteParticipantsBtn').click(function(e) {
                 e.preventDefault();
+                
+                // initializing the value
+                var participant_id = $(this).val();
+                $('#delete_participation_id').val(participant_id);
 
-                var event_id = $(this).val();
-                // $('#delete_event_id').val(event_id);
-
-                $('#delete_form').attr('action', '/admin/events/' + event_id);
+                $('#delete_form').attr('action', '/admin/participants/' + participant_id);
                 $('#deleteModal').modal('show');
 
 

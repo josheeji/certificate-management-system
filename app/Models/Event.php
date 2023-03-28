@@ -12,7 +12,7 @@ class Event extends Model
         'name', 'organizer_name', 
         'eventType_id', 'start_date',
         'end_date', 'description', 
-        'template_id'
+        
         
     ];
 
@@ -21,9 +21,9 @@ class Event extends Model
         return $this->belongsTo(EventType::class, 'eventType_id');
     }
 
-    public function eventTemplate()
-    {
-        return $this->belongsTo(EventCertificateTemplate::class, 'template_id');
-    }
-    
+    // public function eventTemplate()
+    // {
+    //     return $this->belongsTo(EventCertificateTemplate::class, 'template_id');
+    // }
+
 }
