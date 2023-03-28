@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->json('event_custom_field')->nullable();
-            $table->json('participant_custom_field')->nullable();
             $table->timestamps();
         });
     }

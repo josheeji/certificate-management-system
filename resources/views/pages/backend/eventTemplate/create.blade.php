@@ -95,8 +95,6 @@
                 </div>
 
 
-
-
                 <div class="row mb-3">
                     <label for="template_height" class="col-sm-2 col-form-label">Template Height</label>
                     <div class="col-sm-10">

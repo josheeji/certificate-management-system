@@ -8,7 +8,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
 
-                <form action={{ '/admin/events' }} method="POST" id="delete_form">
+                <form action={{ '/admin/event-templates' }} method="POST" id="delete_form">
                     @csrf
                     @method('delete')
                     <div class="modal-header">
@@ -16,8 +16,8 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <input type="hidden" name="event_delete_id" id="delete_event_id">
-                        <h5>Are you sure, you want to delete this category ?</h5>
+                        <input type="hidden" name="eventTemplate_delete_id" id="delete_eventTemplate_id">
+                        <h5>Are you sure, you want to delete this Event Template ?</h5>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
@@ -52,7 +52,7 @@
                         <thead>
                             <tr>
 
-                                <th scope="col" width="50" >S.No.</th>
+                                <th scope="col" width="50">S.No.</th>
                                 <th scope="col">Template Name</th>
                                 <th scope="col">File</th>
 
@@ -76,21 +76,17 @@
                                     </td>
 
                                     <td class="text-center">
-                                        <a title="Download certificate"
+                                        {{-- <a title="Download certificate"
                                             href="/admin/event-templates/{{ $eventTemplate->id }}/download-pdf"
                                             class="btn btn-primary" class="bi bi-arrow-down-circle-fill"><i
-                                                class="bi bi-arrow-down-circle-fill"></i></a>
+                                                class="bi bi-arrow-down-circle-fill"></i></a> --}}
 
                                         <a title="Edit" href="/admin/event-templates/{{ $eventTemplate->id }}/edit"
                                             class="btn btn-icon btn-circle btn-light"><i class="bi bi-pencil"></i></a>
 
-                                        <a title="Delete" href="/admin/events/{{ $eventTemplate->id }}"
-                                            class="btn btn-icon btn-danger btn-circle delete"><i
-                                                class="bi bi-trash-fill"></i></a>
-
-                                        {{-- <button title="Delete" type="button"
-                                            class="btn btn-icon btn-danger btn-circle delete deleteEventBtn"
-                                            value="{{ $event->id }}"><i class="bi bi-trash-fill"></i></button> --}}
+                                        <button title="Delete" type="button"
+                                            class="btn btn-icon btn-danger btn-circle delete deleteTemplateBtn"
+                                            value="{{ $eventTemplate->id }}"><i class="bi bi-trash-fill"></i></button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -109,13 +105,13 @@
 
     <script>
         $(document).ready(function() {
-            $('.deleteEventBtn').click(function(e) {
+            $('.deleteTemplateBtn').click(function(e) {
                 e.preventDefault();
 
-                var event_id = $(this).val();
-                // $('#delete_event_id').val(event_id);
+                var template_id = $(this).val();
+                $('#delete_eventTemplate_id').val(template_id);
 
-                $('#delete_form').attr('action', '/admin/events/' + event_id);
+                $('#delete_form').attr('action', '/admin/event-templates/' + template_id);
                 $('#deleteModal').modal('show');
 
 

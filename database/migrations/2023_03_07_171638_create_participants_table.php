@@ -30,12 +30,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('participants', function (Blueprint $table) {
-            $table->dropColumn('participantType_id');
-            $table->dropColumn('event_id');
-
-            $table->dropForeign(['event_id']);
-            $table->dropColumn('event_id');
-        });
+        Schema::dropIfExists('event_certificate_templates');
+        
     }
 };

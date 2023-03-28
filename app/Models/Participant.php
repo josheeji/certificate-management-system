@@ -19,6 +19,7 @@ class Participant extends Model
         return $this->belongsTo(Event::class, 'event_id');
     }
 
+
     public function template()
     {
         return $this->belongsTo(EventCertificateTemplate::class, 'template_id');
@@ -28,4 +29,5 @@ class Participant extends Model
     {
         return $this->belongsTo(ParticipantType::class, 'participantType_id');
     }
+    
 }

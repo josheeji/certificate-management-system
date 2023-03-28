@@ -22,7 +22,7 @@
             @if (session('message'))
                 <h6 class="alert alert-success">{{ session('message') }} </h6>
             @endif
-            <form class="form-sample" action="/admin/event-templates/{{ $evenntTemplate->id }}" method="POST"
+            <form class="form-sample" action="/admin/event-templates/{{ $eventTemplate->id }}" method="POST"
                 enctype="multipart/form-data">
                 @csrf
                 @method('put')
@@ -32,7 +32,7 @@
                     <div class="col-sm-10">
                         <input type="text" name="template_name" class="form-control" id="template_name"
                             placeholder="Event  Template Name"
-                            value="{{ old('template_name') ?? $evenntTemplate->template_name }}">
+                            value="{{ old('template_name') ?? $eventTemplate->template_name }}">
                     </div>
                     @error('template_name')
                         <span class='text-danger'>{{ $message }}</span>
@@ -44,7 +44,7 @@
                             class="text-danger">*</span></label>
                     <div class="col-sm-10">
                         <input type="file" name="url" class="form-control" id="url" placeholder="Upload url"
-                            value="/backend_assets/images/eventTemplates/{{ $evenntTemplate->url }} ">
+                            value="/backend_assets/images/eventTemplates/{{ $eventTemplate->url }} ">
 
                     </div>
                     @error('url')
@@ -57,7 +57,7 @@
                             class="text-danger">*</span></label>
                     <div class="col-sm-10">
                         <input type="text" name="custom_field" class="form-control" id="custom_field"
-                            placeholder="Custom Field" value="{{ old('custom_field') ?? $evenntTemplate->custom_field }}">
+                            placeholder="Custom Field" value="{{ old('custom_field') ?? $eventTemplate->custom_field }}">
                     </div>
                     @error('custom_field')
                         <span class='text-danger'>{{ $message }}</span>
@@ -69,7 +69,7 @@
                             class="text-danger">*</span></label>
                     <div class="col-sm-10">
                         <input type="file" class="form-control" id="template_files" name="template_files[]" multiple
-                            value="{{ old('template_files') ?? $evenntTemplate->template_files }}">
+                            value="{{ old('template_files') ?? $eventTemplate->template_files }}">
                     </div>
                     @error('template_files')
                         <span class='text-danger'>{{ $message }}</span>
@@ -102,8 +102,8 @@
                             <option>Select Event</option>
                             @foreach ($events as $event)
                                 <option
-                                    value="{{ $event->id }}"{{ $event->id == $event->eventTemplate_id ? 'selected' : '' }}>
-                                    {{ $eventTemplate->name }}
+                                    value="{{ $event->id }}"{{ $event->id == $eventTemplate->event_id ? 'selected' : '' }}>
+                                    {{ $event->name }}
                                 </option>
                             @endforeach
                         </select>
@@ -119,7 +119,7 @@
                     <div class="col-sm-10">
                         <input type="text" name="template_height" class="form-control" id="template_height"
                             placeholder="Template Height"
-                            value="{{ old('template_height') ?? $evenntTemplate->template_height }}">
+                            value="{{ old('template_height') ?? $eventTemplate->template_height }}">
                     </div>
                     @error('template_height')
                         <span class='text-danger'>{{ $message }}</span>
@@ -132,7 +132,7 @@
                     <div class="col-sm-10">
                         <input type="text" name="template_width" class="form-control" id="template_width"
                             placeholder="Template Width"
-                            value="{{ old('template_width') ?? $evenntTemplate->template_width }}">
+                            value="{{ old('template_width') ?? $eventTemplate->template_width }}">
                     </div>
                     @error('template_width')
                         <span class='text-danger'>{{ $message }}</span>

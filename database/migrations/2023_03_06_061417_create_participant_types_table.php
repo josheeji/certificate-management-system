@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('participant_types', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->json('participant_custom_field')->nullable();
+
             $table->timestamps();
         });
     }

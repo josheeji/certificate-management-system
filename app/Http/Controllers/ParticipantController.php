@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exports\ParticipantExport;
+use App\Http\Requests\ParticipationStore;
+use App\Http\Requests\ParticipationUpdate;
 use App\Imports\ParticipantsImport;
 use Illuminate\Support\Facades\Response;
 
@@ -38,7 +40,7 @@ class ParticipantController extends Controller
         return view('pages.backend.participant.create', compact('events', 'participantTypes'));
     }
 
-    public function store(Request $request)
+    public function store(ParticipationStore $request)
     {
         $input = $request->only('name', 'affilated_institute', 'post', 'event_id', 'participantType_id');
         $participant = Participant::create($input);
@@ -57,7 +59,7 @@ class ParticipantController extends Controller
         return view('pages.backend.participant.edit', compact('participant', 'events', 'participantTypes'));
     }
 
-    public function update(Request $request, $id)
+    public function update(ParticipationUpdate $request, $id)
     {
         $participant = Participant::findOrFail($id);
         $participant->name = $request->name;
@@ -72,9 +74,12 @@ class ParticipantController extends Controller
     }
 
 
-    public function destroy(Participant $participant)
+    public function destroy($id)
     {
-        return redirect('/admin/event-templates')->with('message', 'Participant Deleted Successfully..');
+        $participant=Participant::findOrFail($id);
+        $participant->delete();
+
+        return redirect('/admin/participants')->with('message', 'Participant Deleted Successfully..');
     }
 
 
@@ -98,13 +103,11 @@ class ParticipantController extends Controller
         return redirect('/admin/participants')->with('message', 'File Uploaded Successfully');
     }
 
-
-
     public function generatePdf(Request $request, $id)
     {
         $participant = Participant::findOrFail($id);
         // dd($participant);
-        $template = $participant->event->eventTemplate;
+        $template = $participant->participantType;
         // dd($template);
 
 
@@ -119,7 +122,7 @@ class ParticipantController extends Controller
         $pdf->loadView('eventTemplates.' . $template->id . '.index', compact('participant', 'resourcePath'))
             ->setPaper($customPaper, 'potrait');
         // ->setPaper('A4', 'portrait');
-        return $pdf->stream('certificate.pdf');
-        // return $pdf->download();    
+        // return $pdf->stream('certificate.pdf');
+        return $pdf->download('certificate.pdf');    
     }
 }

@@ -17,6 +17,7 @@ class EventType extends Model
         'event_custom_field',
         'participant_custom_field'
     ];
+    
 
     public function events()
     {

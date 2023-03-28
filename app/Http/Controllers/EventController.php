@@ -51,7 +51,6 @@ class EventController extends Controller
         $event->start_date = $request->start_date;
         $event->end_date = $request->end_date;
         $event->description = $request->description;
-        $event->template_id = $request->template_id;
 
         $event->update();
         return redirect('admin/events')
