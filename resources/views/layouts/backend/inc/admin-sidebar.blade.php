@@ -14,7 +14,7 @@
 
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ URL::to('/') }}">
+            <a class="nav-link collapsed" href="{{ URL::to('/home') }}">
                 <i class="bi bi-view-stacked"></i>
                 <span>View Site</span>
             </a>
@@ -35,14 +35,15 @@
                         <i class="bi bi-circle"></i><span>Events</span>
                     </a>
                 </li>
-                <li>
-                    <a href="/admin/event-templates">
-                        <i class="bi bi-circle"></i><span>Event Templates</span>
-                    </a>
-                </li>
+
                 <li>
                     <a href="/admin/participant-types">
                         <i class="bi bi-circle"></i><span> Participant Type</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/admin/event-templates">
+                        <i class="bi bi-circle"></i><span>Event Templates</span>
                     </a>
                 </li>
                 <li>
@@ -68,6 +69,17 @@
                     </a>
                 </li> --}}
             </ul>
+
+        <li class="nav-item">
+            <form action="/admin/logout" method="post">
+                @csrf
+                <button class="nav-link collapsed" type="submit">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Logout</span>
+                </button>
+            </form>
+            
+        </li>
         </li>
 
 

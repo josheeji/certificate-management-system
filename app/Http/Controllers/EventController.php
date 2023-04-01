@@ -26,7 +26,17 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        $input = $request->only('name', 'organizer_name', 'eventType_id', 'start_date', 'end_date', 'description', 'template_id');
+        $input = $request->only(
+            'name',
+            'organizer_name',
+            'eventType_id',
+            'start_date',
+            'end_date',
+            'description',
+            'location',
+            'event_time'
+        );
+
         $event = Event::create($input);
         $event->save();
         return redirect('admin/events')->with('message', 'Event Created Successfully..');
@@ -50,6 +60,8 @@ class EventController extends Controller
         $event->eventType_id = $request->eventType_id;
         $event->start_date = $request->start_date;
         $event->end_date = $request->end_date;
+        $event->location = $request->location;
+        $event->event_time = $request->event_time;
         $event->description = $request->description;
 
         $event->update();

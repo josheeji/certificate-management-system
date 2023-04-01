@@ -40,13 +40,13 @@
                 </h5>
 
                 <!-- Default Table -->
-             @if ($errors->any())
-                <div class="alert alert-danger">
-                    @foreach ($errors->all() as $error)
-                        <div>{{ $error }}</div>
-                    @endforeach
-                </div>
-            @endif
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        @foreach ($errors->all() as $error)
+                            <div>{{ $error }}</div>
+                        @endforeach
+                    </div>
+                @endif
                 @if (session('message'))
                     <div class="alert alert-success">{{ session('message') }}</div>
                 @endif
@@ -55,25 +55,22 @@
                     <a href="/admin/participant-types/create" class="btn btn-primary btn-sm">
                         <h6>Add New Participant Type</h6>
                     </a>
-
-
                     <hr>
                     <table id="myDataTable" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th scope="col" width="100">S.No.</th>
                                 <th scope="col">Name</th>
-
                                 <th class="text-center" width="220">Action</th>
 
                             </tr>
                         </thead>
                         <tbody>
+                            @php $i=1 @endphp
                             @foreach ($participantTypes as $participantType)
                                 <tr>
-                                    <td>{{ $participantType->id }} </td>
+                                    <td>{{ $i++ }} </td>
                                     <td>{{ $participantType->name }} </td>
-
                                     <td class="text-center">
                                         <a title="Edit" href="/admin/participant-types/{{ $participantType->id }}/edit"
                                             class="btn btn-icon btn-circle btn-light"><i class="bi bi-pencil"></i></a>

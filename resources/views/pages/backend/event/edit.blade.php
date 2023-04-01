@@ -50,6 +50,17 @@
                 </div>
 
                 <div class="row mb-3">
+                    <label for="location" class="col-sm-2 col-form-label">Location<span class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" name="location" class="form-control" id="location" placeholder="Location"
+                            value="{{ old('location') ?? $event->location }}">
+                    </div>
+                    @error('location')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="row mb-3">
                     <label for="start_date" class="col-sm-2 col-form-label">Start Date<span
                             class="text-danger">*</span></label>
                     <div class="col-sm-10">
@@ -109,6 +120,19 @@
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
                 </div> --}}
+
+
+                <div class="row mb-3">
+                    <label for="event_time" class="col-sm-2 col-form-label">Event Time<span
+                            class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="text" name="event_time" class="form-control" id="event_time"
+                            placeholder="Event Time" value="{{ old('event_time') ?? $event->event_time }}">
+                    </div>
+                    @error('event_time')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
 
                 <div class="row mb-3">
                     <label for="description" class="col-sm-2 col-form-label">Description<span

@@ -24,6 +24,14 @@ class frontendController extends Controller
         return view('pages.frontend.event.index', compact('events', 'participants'));
 
     }
+    public function detail($id)
+    {
+        $events = Event::findOrFail($id);
+        $participants = Participant::where('event_id', '=', $id)->get();
+        
+        return view('pages.frontend.event.detail', compact('events', 'participants'));
+
+    }
 
    
 }

@@ -21,7 +21,7 @@
         </div>
     </section>
 
-    <div class="container pb-50 pt-80">
+    <div class="container pb-50 pt-2000">
         {{-- <div class="section-content">
             <div class="row">
                 <h1>Events</h1>
@@ -30,13 +30,13 @@
         <ul>
             @foreach ($events as $event)
                 <div class="schedule-details clearfix p-15 pt-10">
-                    <h5 class="font-16 title"><a href="#">{{ $event->name }}</a>
-                    </h5>
+                    <h3>{{ $event->name }}
+                    </h3>
                     <div class="mt-10">
                         <a class="btn btn-colored btn-theme-colored btn-sm"
-                            href="/event/{{ $event->id }}/downloads/certificates">Download
-                            Certificate</a>
-                        <a class="btn btn-colored btn-theme-colored btn-sm" href="#">Details</a>
+                            href="/events/{{ $event->id }}/download/certificates"><h6>Download
+                                Certificate</h6></a>
+                        <a class="btn btn-colored btn-theme-colored btn-sm" href="/events/{{ $event->id }}/detail"><h6>Details</h6></a>
                     </div>
 
                 </div>

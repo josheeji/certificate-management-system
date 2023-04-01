@@ -1,5 +1,7 @@
 @php
     use App\Contracts\AbstractInputFile;
+    $inputTypes = AbstractInputFile::toArray();
+    
 @endphp
 {{-- {{$inputTypes}} --}}
 
@@ -50,14 +52,14 @@
                             <td>
                                 {{-- <label for="label"> Label </label> --}}
                                 <input type="text" name="label" id="label" placeholder="label" value=""
-                                class="custom-select form-control">
+                                    class="custom-select form-control">
 
                             </td>
                             <td>
                                 {{-- <label for="type"> Type </label> --}}
                                 <select name="input_field" aria-placeholder="Select Input Type"
                                     class="col-sm-10 col-form-label">
-                                    @foreach (InputFileInterface::toArray() as $value => $label)
+                                    @foreach (AbstractInputFile::toArray() as $value => $label)
                                         <option value="<?= $value ?>"><?= $label ?></option>
                                     @endforeach
                                 </select>
@@ -67,7 +69,7 @@
                                 <input type="text" name="name" id="name" placeholder="name" value=""
                                     class="col-sm-10 col-form-label">
                             </td>
-                            <td> 
+                            <td>
                                 {{-- <label for="placeholder"> Placeholder </label> --}}
                                 <input type="text" name="placeholder" id="placeholder" placeholder="placeholder"
                                     value="" class="col-sm-10 col-form-label">

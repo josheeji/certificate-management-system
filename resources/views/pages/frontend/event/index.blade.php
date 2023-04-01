@@ -10,19 +10,20 @@
                     <div class="section-content pt-2">
                         <div class="row">
                             <div class="col-md-12">
-                                <h3 class="title text-white">Download Certificate</h3>
+                                <h2 class="title text-white">Download Certificate</h2>
                             </div>
-                            {{-- <div class="col-md-12" style="display:none">
+                            <div class="col-md-12" style="display:none">
                                 <ol class="breadcrumb text-center mt-10 white">
                                     <li><a href="https://conferencenepal.com/home">Home</a></li>
                                     <li class="active">5th National Conference of SIMON Certificate Download</li>
                                 </ol>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
             <!-- Section: Past Events -->
+
             {{-- <section style="min-height:500px;"> --}}
 
             <div class="container pb-50 pt-500">
@@ -68,7 +69,10 @@
                                     @endforeach
 
                                 </tbody>
+                               
                             </table>
+                            <a href="{{ url('/home') }}"> <button type="button" class="btn btn-success">Back
+                            </button> </a>
                         </div>
                     </div>
                 </div>

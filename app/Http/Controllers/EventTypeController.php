@@ -10,6 +10,8 @@ class EventTypeController extends Controller
     public function index()
     {
         $eventTypes = EventType::all();
+        // $eventType = EventType::find($eventTypeId);
+
 
         return view('pages.backend.eventType.index', compact('eventTypes'));
     }
@@ -21,15 +23,22 @@ class EventTypeController extends Controller
     }
 
     public function store(Request $request)
-    {       
+    {
 
 
         $input = $request->only('name');
-        
         $eventType = EventType::create($input);
+        $data = [
+            'label' => request('label'),
+            'event_type_name' => request('name'),
+            'input_field' => request('input_field'),
+            'mandatory' => request('mandatory') ? true : false,
+            'tags' => explode(',', request('tags')),
+        ];
+        $eventType->event_custom_field = $data;
 
         $eventType->save();
-        
+
         // $input = $request->only([
         //     'label' => $request->input('label'),
         //     'input_field' => $request->input('input_field'),

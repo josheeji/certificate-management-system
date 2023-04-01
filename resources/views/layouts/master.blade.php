@@ -9,11 +9,25 @@
     <meta content="" name="keywords">
 
 
-    {{-- tsg inputs --}}
+    {{-- tags inputs --}}
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/1.0.0/bootstrap-taginput.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js">
+
 
     <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.2/tagmanager.min.css">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tagmanager/3.0.2/tagmanager.min.js"></script>
 
@@ -71,14 +85,18 @@
 </head>
 
 <body class="">
-    @include('layouts.backend.inc.admin-sidebar')
-    @include('layouts.backend.inc.admin-header')
+
+{{-- @include('layouts.navigation') --}}
+
+    
+
+    @yield('navigations')
 
     <main id="main" class="main">
         @yield('content')
 
     </main><!-- End #main -->
-    @include('layouts.backend.inc.admin-footer')
+    {{-- @include('layouts.backend.inc.admin-footer') --}}
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>
 

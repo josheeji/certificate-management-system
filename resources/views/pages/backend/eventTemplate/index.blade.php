@@ -63,9 +63,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php $i=1 @endphp
+
                             @foreach ($eventTemplates as $eventTemplate)
                                 <tr>
-                                    <td>{{ $eventTemplate->id }}</td>
+                                    <td>{{ $i++ }} </td>
                                     <td>{{ $eventTemplate->template_name }}</td>
 
                                     <td>{{ $eventTemplate->url }}</td>

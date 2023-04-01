@@ -27,6 +27,10 @@
             @if (session('message'))
                 <h6 class="alert alert-success">{{ session('message') }} </h6>
             @endif
+
+            {{-- <a href="" class="btn btn-primary btn-fw" class="col-md-3 mb-3" id="add_row_btn">Add Custom
+                Field</a> --}}
+
             <form class="form-sample" action="/admin/event-types" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row mb-3">
@@ -39,89 +43,79 @@
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
                 </div>
-                <a href="#" class="btn btn-primary btn-fw" id="add_row_btn">Custom Field</a>
+
+                <div id="custom_fields_table" style="display;">
+                    <div class="row mb-3">
+                        <table class="table table-bordered mt-6">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Label</th>
+                                    <th scope="col">Name</th>
+
+                                    <th scope="col">Type</th>
+                                    <th></th>
+                                    <th scope="col">Tags </th>
+                                    {{-- <th>+</th> --}}
 
 
-                <div class="row mb-3">
-                    <label for="name" class="col-sm-10 col-form-label"><span class="text-danger"></span></label>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Label</th>
-                                <th scope="col">Type</th>
-                                <th></th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Placeholder </th>
-                                <th scope="col">Tags </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" name="label" id="label" placeholder="label"
+                                            value="" class="custom-select form-control">
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    {{-- <label for="label"> Label </label> --}}
-                                    <input type="text" name="label" id="label" placeholder="label" value=""
-                                        class="custom-select form-control">
+                                    </td>
 
-                                </td>
-                                <td>
-                                    {{-- <label for="type"> Type </label> --}}
-                                    <select name="input_field" aria-placeholder="Select Input Type"
-                                        class="custom-select form-control">
-                                        @foreach (AbstractInputFile::toArray() as $value => $label)
-                                            <option value="<?= $value ?>"><?= $label ?></option>
-                                        @endforeach
+                                    <td>
+                                        <input type="text" name="event_type_name" id="event_name" placeholder="Event Type Name"
+                                            value="" class="custom-select form-control">
+                                    </td>
 
-
-                                    </select>
-
-                                </td>
-                                <td>
-                                    <div class="form-group">
-                                        <label for="mandatory">Is it mandatory?</label>
-                                        <input type="checkbox" id="mandatory" name="mandatory" value="1">
-                                    </div>
-                                </td>
-
-                                <td>
-                                    {{-- <label for="name"> Name </label> --}}
-                                    <input type="text" name="name" id="name" placeholder="name" value=""
-                                        class="custom-select form-control">
-                                </td>
-                                <td>
-                                    {{-- <label for="placeholder"> Placeholder </label> --}}
-                                    <input type="text" name="placeholder" id="placeholder" placeholder="placeholder"
-                                        value="" class="custom-select form-control">
-                                </td>
-                                <br>
-
-                                <td>
-                                    <input type="text" name="tags" placeholder="Tags"
-                                        class="tm-input form-control tm-input-info" />
-                                </td>
+                                    <td>
+                                        <select name="input_field" aria-placeholder="Select Input Type"
+                                            class="custom-select form-control">
+                                            @foreach (AbstractInputFile::toArray() as $value => $label)
+                                                <option value="<?= $value ?>"><?= $label ?></option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <div class="form-group">
+                                            <label for="mandatory">Is it mandatory?</label>
+                                            <input type="checkbox" id="mandatory" name="mandatory" value="1">
+                                        </div>
+                                    </td>
 
 
-                            </tr>
-                        </tbody>
-                    </table>
+                                    <td>
+                                        <input type="text" name="tags" class="form-control" data-role="tagsinput">
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
                 </div>
                 <div class="col-md-3 mb-3">
                     <button type="submit" id="submit_form" class="btn btn-primary">Submit</button>
 
                 </div>
-                <br>
 
             </form>
+
             <!-- End Horizontal Form -->
         </div>
     </div>
-
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $("#add_row_btn").click(function() {
+                $("#custom_fields_table").toggle();
+            });
+        });
+    </script>
 @endsection
 
-@section('scripts')
-
-    <script type="text/javascript">
-        $(".tm-input").tagsManager();
-    </script>
-    
 @endsection

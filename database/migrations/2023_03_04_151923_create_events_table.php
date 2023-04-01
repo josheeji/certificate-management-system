@@ -15,10 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('organizer_name');
+            $table->text('location');
             $table->text('description')->nullable();
             $table->date('start_date');
             $table->date('end_date');
-            // $table->text('certificate_template')->nullable();
+
+            $table->time('event_time')->format('h:i a');
+
             $table->unsignedBigInteger('eventType_id');
             $table->timestamps();
             $table->foreign('eventType_id')->references('id')->on('event_types')->onDelete('cascade');

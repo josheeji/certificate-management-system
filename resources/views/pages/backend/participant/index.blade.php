@@ -101,9 +101,11 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php $i=1 @endphp
+
                             @foreach ($participants as $participant)
                                 <tr>
-                                    <td>{{ $participant->id }}</td>
+                                    <td>{{ $i++ }}</td>
                                     <td>{{ $participant->name }}</td>
                                     <td>{{ $participant->affilated_institute }}</td>
                                     <td>{{ $participant->post }}</td>

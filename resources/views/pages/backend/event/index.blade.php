@@ -55,10 +55,14 @@
                                 <th scope="col">S.No.</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Organizer Name</th>
+                                <th scope="col">Location</th>
                                 <th scope="col">Event Type</th>
                                 {{-- <th scope="col">Event Template</th> --}}
-                                <th scope="col">Start</th>
-                                <th scope="col">End</th>
+                                <th scope="col">Start Date</th>
+                                <th scope="col">End Date</th>
+
+                                <th scope="col">Event start Time</th>
+
                                 {{-- <th scope="col">Description</th>
                                 <th scope="col">Certificate Template</th> --}}
 
@@ -68,17 +72,26 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @php $i=1 @endphp
+
                             @foreach ($events as $event)
                                 <tr>
-                                    <td>{{ $event->id }}</td>
+                                    <td>{{ $i++ }} </td>
                                     <td>{{ $event->name }}</td>
 
                                     <td>{{ $event->organizer_name }}</td>
+                                    <td>{{ $event->location }}</td>
                                     <td>{{ $event->eventType->name }}</td>
                                     {{-- <td>{{ $event->eventTemplate->template_name }}</td> --}}
 
                                     <td>{{ $event->start_date }}</td>
                                     <td>{{ $event->end_date }}</td>
+                                    {{-- <td>{{ $event->event_time }}</td> --}}
+                                    <td> {{ \Carbon\Carbon::parse($event->event_time)->tz('Asia/Kathmandu')->format('h:i A') }}
+                                    </td>
+
+                                    {{-- <td>{{\Carbon\Carbon::create(2023, 03, 31, 15, 0, 0, 'UTC')->timezone('Asia/Kathmandu');}} </td> --}}
+
 
                                     <td class="text-center">
                                         <a title="Edit" href="/admin/events/{{ $event->id }}/edit"
