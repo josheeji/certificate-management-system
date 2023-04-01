@@ -45,29 +45,23 @@
                     <table id="myDataTable" class="table table-bordered">
                         <thead>
                             <tr>
-
                                 <th scope="col">S.No.</th>
                                 <th scope="col"> Event Type Name</th>
-                                <th scope="col">Custom Field</th>
-
-
+                                {{-- <th scope="col">Custom Field</th> --}}
                                 <th class="text-center" width="220">Action</th>
-
                             </tr>
                         </thead>
                         <tbody>
+                            @php $i=1 @endphp
                             @foreach ($eventTypes as $eventType)
                                 <tr>
-                                    <td>{{ $eventType->id }} </td>
+                                    <td>{{ $i++ }} </td>
                                     <td>{{ $eventType->name }} </td>
-                                    <td>{{ $eventType->custom_field }}</td>
+                                    {{-- <td>{{ $eventType->custom_field }}</td> --}}
 
                                     <td class="text-center">
                                         <a title="Edit" href="/admin/event-types/{{ $eventType->id }}/edit"
                                             class="btn btn-icon btn-circle btn-light"><i class="bi bi-pencil"></i></a>
-                                        {{-- <a title="Delete" href="admin/event-types/{{ $eventType->id }}"
-                                            class="btn btn-icon btn-danger btn-circle delete"><i
-                                                class="bi bi-trash-fill"></i></a> --}}
 
                                         <button title="Delete" type="button"
                                             class="btn btn-icon btn-danger btn-circle delete deleteEventTypeBtn"

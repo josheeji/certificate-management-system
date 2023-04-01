@@ -22,6 +22,9 @@ return new class extends Migration
             $table->foreign('event_id')->references('id')->on('events')->onDelete('cascade');
             $table->foreign('participantType_id')->references('id')->on('participant_types')->onDelete('cascade');
 
+            $table->float('template_width')->nullable();
+            $table->float('template_height')->nullable();
+
         });
     }
 

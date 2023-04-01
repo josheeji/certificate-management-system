@@ -1,8 +1,26 @@
 @extends('layouts.master')
 
-@section('title', 'Create Event')
-
 @section('content')
+
+@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{-- this code is used for storing the value in dynamic form --}}
+{{-- @section('content')
 
     <div class="col-lg-12">
 
@@ -79,4 +97,4 @@
 
         </div>
     </div>
-@endsection
+@endsection --}}

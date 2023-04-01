@@ -24,13 +24,14 @@ return new class extends Migration
             $table->foreign('participantType_id')->references('id')->on('participant_types')->onDelete('cascade');
         });
     }
+    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('event_certificate_templates');
+        Schema::dropIfExists('participants');
         
     }
 };
