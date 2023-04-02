@@ -19,6 +19,11 @@
 
     {{-- Bootstrap 5 CDN Link --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
 
     <!-- bootstrap-icons -->
@@ -30,9 +35,9 @@
     <link href="https://conferencenepal.com/css/animate.css" rel="stylesheet" type="text/css">
     <link href="https://conferencenepal.com/css/css-plugin-collections.css" rel="stylesheet" />
     <!-- CSS | menuzord megamenu skins -->
-    <link id="menuzord-menu-skins" href="css/menuzord-skins/menuzord-boxed.css" rel="stylesheet" />
+    <link id="menuzord-menu-skins" href="/css/menuzord-skins/menuzord-boxed.css" rel="stylesheet" />
     <!-- CSS | Main style file -->
-    <link href="https://conferencenepal.com/css/style-main.css" rel="stylesheet" type="text/css">
+    <link href="https://conferencenepal.com/css/style-main.css" rel="stylesheet">
     <!-- CSS | Theme Color -->
     <link href="https://conferencenepal.com/css/colors/theme-skin-green.css" rel="stylesheet" type="text/css">
     <!-- CSS | Preloader Styles -->
@@ -46,8 +51,19 @@
     <!-- CSS | Responsive media queries -->
     <link href="https://conferencenepal.com/css/responsive.css" rel="stylesheet" type="text/css">
     <!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
-    {{-- <link href="css/style.css" rel="stylesheet" type="text/css"> --}}
-    {{-- <link href="/backend_assets/css/style.css" rel="stylesheet"> --}}
+    {{-- <link href="/assets/css/style.css" rel="stylesheet" type="text/css"> --}}
+    <link href="/backend_assets/css/style.css" rel="stylesheet">
+
+    {{-- web-fonts --}}
+    {{-- <link rel="stylesheet" href="/assets/frontend/fonts/materialdesignicons.min.css"> --}}
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@fontawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+
+
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+
 
 
     <!-- Revolution Slider 5.x CSS settings -->
@@ -69,39 +85,16 @@
 </head>
 
 <body class="">
-    {{-- <div id="wrapper">
+    <div id="wrapper">
 
         <!-- Header -->
         @include('layouts.frontend.inc.header')
 
-        <!-- Main Wrapper -->
-        <div class="wrapper">
-            <div id="preloader">
-                <div id="spinner">
-                    <div class="preloader-dot-loading">
-                        <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
-                    </div>
-                </div>
-                <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
-            </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-md-12 mb-10">
-                        <img class="img-fullwidth" src="images/about4.jpg" alt="">
-                    </div>
-                    <div class="col-xs-6 col-md-6 pr-5">
-                        <img class="img-fullwidth" src="images/about6 (1).jpg" alt="">
-                    </div>
-                    <div class="col-xs-6 col-md-6 pl-5">
-                        <img class="img-fullwidth" src="images/about6 (2).jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
+
     </div>
-    </section> --}}
+    </section>
     @yield('content')
-    
+
 
     <!-- Footer -->
     {{-- @include('layouts.frontend.inc.footer') --}}
@@ -116,7 +109,7 @@
     <!-- SLIDER REVOLUTION 5.0 EXTENSIONS
       (Load Extensions only on Local File Systems !
        The following part can be removed on Server for On Demand Loading) -->
-    <script type="text/javascript"
+    {{-- <script type="text/javascript"
         src="https://conferencenepal.com/js/revolution-slider/js/extensions/revolution.extension.actions.min.js"></script>
     <script type="text/javascript"
         src="https://conferencenepal.com/js/revolution-slider/js/extensions/revolution.extension.carousel.min.js"></script>
@@ -134,7 +127,7 @@
         src="https://conferencenepal.com/js/revolution-slider/js/extensions/revolution.extension.parallax.min.js"></script>
     <script type="text/javascript"
         src="https://conferencenepal.com/js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js">
-    </script>
+    </script> --}}
     <script type="text/javascript"
         src="https://conferencenepal.com/js/revolution-slider/js/extensions/revolution.extension.video.min.js"></script>
 

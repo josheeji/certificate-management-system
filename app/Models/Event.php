@@ -12,7 +12,7 @@ class Event extends Model
         'name', 'organizer_name', 
         'eventType_id', 'start_date',
         'end_date', 'description', 'location',
-        'event_time'
+        'event_time', 'image'
         
         
     ];

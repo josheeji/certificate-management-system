@@ -37,6 +37,14 @@
                     @enderror
                 </div>
 
+
+                <div class="form-group">
+                    <label for="image"> Image</label>                   
+                    <input type="file" name="image" class="form-control" placeholder="Event Image">
+                    <img src="/backend_assets/images/events/{{ $event->image }}" width="100px">
+
+                </div>
+
                 <div class="row mb-3">
                     <label for="organizer_name" class="col-sm-2 col-form-label">Organizer Name<span
                             class="text-danger">*</span></label>

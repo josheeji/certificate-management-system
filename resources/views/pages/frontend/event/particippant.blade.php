@@ -73,37 +73,71 @@
     </div>
 </section>
 
-
-
+{{-- html adn csss code for image to make index.php file --}}
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <style>
-      @page {
-        margin: 0px;
-        padding: 0px;
-      }
+        @page {
+            margin: 0px;
+            padding: 0px;
+        }
 
-      body {
-        margin: 0px;
-        max-width: 1000px;
-      }
+        body {
+            margin: 0px;
+            max-width: 1000px;
+        }
 
-      img {
-        max-width: 900px;
-      }
+        img {
+            max-width: 900px;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="">
-      <img class="" src="{{$resourcePath}}/Aakriti Pokharel-pdf.png" />
-      <h1 style="position: absolute; top: 360px; left: 430px">
-        {{ $participant->name }}
-      </h1>
-      <h1 style="position: absolute; top: 400px; left: 430px">
-        {{ $participant->participantType->name }}
-    </h1>
+        <img class="" src="{{ $resourcePath }}/Aakriti Pokharel-pdf.png" />
+        <h1 style="position: absolute; top: 360px; left: 430px">
+            {{ $participant->name }}
+        </h1>
+        <h1 style="position: absolute; top: 400px; left: 430px">
+            {{ $participant->participantType->name }}
+        </h1>
     </div>
-  </body>
+</body>
+
 </html>
+
+{{-- testing --}}
+<div class="col-sm-6 col-md-4 col-lg-4">
+    <div class="schedule-box maxwidth500 mb-30 bg-lighter">
+
+        <div class="thumb"> <img src="https://conferencenepal.com/uploads/media/banner_LQgpyFLpCZerSHdP9lNh.jpeg">
+        </div>
+
+        <div class="schedule-details clearfix p-15 pt-10">
+            <h5 class="font-16 title"><a href="https://conferencenepal.com/events/detail/6/apaccm2022">APACCM2022</a>
+            </h5>
+            <ul class="list-inline font-11 mb-20">
+                <li><i class="fa fa-calendar mr-5"></i>2022-12-04</li>
+                <li><i class="fa fa-map-marker mr-5"></i>Kathmandu</li>
+            </ul>
+            <p>
+                aa </p>
+            <div class="mt-10">
+                <a class="btn btn-colored btn-theme-colored btn-sm"
+                    href="https://conferencenepal.com/downloads/certificates/event/6">Download Certificate</a>
+                <a class="btn btn-colored btn-theme-colored btn-sm"
+                    href="https://conferencenepal.com/events/detail/6/apaccm2022">Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{{-- detail --}}
+
+
+
