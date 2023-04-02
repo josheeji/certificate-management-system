@@ -6,6 +6,8 @@ use App\Models\Event;
 use App\Models\EventCertificateTemplate;
 use App\Models\EventType;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+
 
 class EventController extends Controller
 {
@@ -36,6 +38,13 @@ class EventController extends Controller
             'location',
             'event_time'
         );
+        if($request->hasFile('image')){
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = microtime(). '.'. $extension;
+            $file->move(public_path('/backend_assets/images/events'), $filename);
+            $input['image']= $filename;
+        }
 
         $event = Event::create($input);
         $event->save();
@@ -63,6 +72,20 @@ class EventController extends Controller
         $event->location = $request->location;
         $event->event_time = $request->event_time;
         $event->description = $request->description;
+
+        if($request->hasFile('image')){
+           
+            $destination = 'backend_assets/images/events/'. $event->image;
+            if(File::exists($destination)){
+                File::delete($destination);
+            }
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = microtime(). '.'. $extension;
+            $file->move(public_path('/backend_assets/images/events'), $filename);
+            $event->image = $filename;
+            
+        }
 
         $event->update();
         return redirect('admin/events')

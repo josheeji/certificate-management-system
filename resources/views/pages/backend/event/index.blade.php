@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 @section('title', 'Events Table')
 
 @section('content')
@@ -57,6 +57,7 @@
                                 <th scope="col">Organizer Name</th>
                                 <th scope="col">Location</th>
                                 <th scope="col">Event Type</th>
+                                <th scope="col">Image</th>
                                 {{-- <th scope="col">Event Template</th> --}}
                                 <th scope="col">Start Date</th>
                                 <th scope="col">End Date</th>
@@ -82,6 +83,11 @@
                                     <td>{{ $event->organizer_name }}</td>
                                     <td>{{ $event->location }}</td>
                                     <td>{{ $event->eventType->name }}</td>
+                                    {{-- <td>{{ $event->image }}</td> --}}
+                                    <td>
+                                        <img src="/backend_assets/images/events/{{ $event->image }}" width="80px" height="80px">
+
+                                    </td>
                                     {{-- <td>{{ $event->eventTemplate->template_name }}</td> --}}
 
                                     <td>{{ $event->start_date }}</td>

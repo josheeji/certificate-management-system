@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Create Events')
 @section('content')
@@ -36,6 +36,20 @@
                     @enderror
                 </div>
 
+
+                <div class="row mb-3">
+                    <label for="iamge" class="col-sm-2 col-form-label"> Image<span class="text-danger">*</span></label>
+                    <div class="col-sm-10">
+                        <input type="file" name="image" class="form-control" id="image" placeholder="Event Image"
+                            value="{{ old('image') }}">
+                    </div>
+                    @error('image')
+                        <span class='text-danger'>{{ $message }}</span>
+                    @enderror
+                </div>
+
+
+
                 <div class="row mb-3">
                     <label for="organizer_name" class="col-sm-2 col-form-label">Organizer Name<span
                             class="text-danger">*</span></label>
@@ -51,8 +65,8 @@
                 <div class="row mb-3">
                     <label for="location" class="col-sm-2 col-form-label">Location<span class="text-danger">*</span></label>
                     <div class="col-sm-10">
-                        <input type="text" name="location" class="form-control" id="location"
-                            placeholder="Location" value="{{ old('location') }}">
+                        <input type="text" name="location" class="form-control" id="location" placeholder="Location"
+                            value="{{ old('location') }}">
                     </div>
                     @error('location')
                         <span class='text-danger'>{{ $message }}</span>
@@ -104,12 +118,11 @@
 
 
                 <div class="row mb-3">
-                    <label for="event_time" class="col-sm-2 col-form-label">Event Time<span
-                            class="text-danger">*</span>
-                           </label>
+                    <label for="event_time" class="col-sm-2 col-form-label">Event Time<span class="text-danger">*</span>
+                    </label>
                     <div class="col-sm-10">
                         <input type="text" name="event_time" class="form-control" id="event_time"
-                            placeholder="Event Starting Time" value="{{ old('event_time') }}">                       
+                            placeholder="Event Starting Time" value="{{ old('event_time') }}">
                     </div>
                     @error('event_time')
                         <span class='text-danger'>{{ $message }}</span>

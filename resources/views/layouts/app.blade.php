@@ -4,7 +4,5 @@
     @include('layouts.backend.inc.admin-header')
 @endsection
 
-<main id="main" class="main">
-    @yield('content')
 
-</main>
+@include('layouts.backend.inc.admin-footer')

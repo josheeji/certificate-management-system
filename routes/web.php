@@ -10,6 +10,7 @@ use App\Http\Controllers\EventTypeController;
 use App\Http\Controllers\ParticipantController;
 use App\Http\Controllers\ParticipantTypeController;
 use App\Models\ParticipantType;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 
@@ -109,5 +110,10 @@ Route::prefix('/admin/participants')->middleware('auth')->group(function () {
     Route::get('/{id}/edit', [ParticipantController::class, 'edit']);
     Route::put('/{id}', [ParticipantController::class, 'update']);
     Route::delete('/{id}', [ParticipantController::class, 'destroy']);
+});
+
+Route::get('/manage-site', function() {
+    Artisan::call('migrate');
+    Artisan::call('db:seed');
 });
 

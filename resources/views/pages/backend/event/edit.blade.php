@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.app')
 
 @section('title', 'Update Events')
 @section('content')
@@ -35,6 +35,14 @@
                     @error('name')
                         <span class='text-danger'>{{ $message }}</span>
                     @enderror
+                </div>
+
+
+                <div class="form-group">
+                    <label for="image"> Image</label>                   
+                    <input type="file" name="image" class="form-control" placeholder="Event Image">
+                    <img src="/backend_assets/images/events/{{ $event->image }}" width="100px">
+
                 </div>
 
                 <div class="row mb-3">
